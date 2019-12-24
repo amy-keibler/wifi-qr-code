@@ -1,0 +1,6 @@
+/target
+**/*.rs.bk
+Cargo.lock
+
+/wifi_qr.png
+/wifi_qr.svg
