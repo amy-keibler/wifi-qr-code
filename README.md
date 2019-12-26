@@ -2,7 +2,7 @@
 
 [![crates.io](https://img.shields.io/crates/v/wifi-qr-code.svg)](https://crates.io/crates/wifi-qr-code)
 [![docs.rs](https://docs.rs/wifi-qr-code/badge.svg)](https://docs.rs/wifi-qr-code/)
-![Test status badge](https://github.com/amy-keibler/wifi-qr-code/workflows/Test/badge.svg)
+![Test status badge](https://github.com/amy-keibler/wifi-qr-code/workflows/tests/badge.svg)
 
 Wifi QR codes are a way to encode wifi connection information and credentials into a QR code so that it can be scanned. They are supported via the latest Android and iOS phones, as well as other platforms. Unfortunately, there does not appear to be a standardized format for the data, so this implementation consults existing implementations (linked in the [References](#references) section). If a standard becomes available, please let me know.
 
