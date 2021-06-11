@@ -1,6 +1,6 @@
 [package]
 name = "wifi-qr-code"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Amy Keibler <wanderingelf14@gmail.com>"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
@@ -17,8 +17,8 @@ is-it-maintained-open-issues = { repository = "https://github.com/amy-keibler/wi
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-qrcode-generator = "1.0.5"
+qrcode-generator = "4.1.1"
 
 [dev-dependencies]
 structopt = "0.3.5"
-rpassword = "4.0.3"
+rpassword = "5.0.1"
