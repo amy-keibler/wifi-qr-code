@@ -1,6 +1,6 @@
 use structopt::StructOpt;
 
-use wifi_qr_code::QrCodeEcc;
+use wifi_qr_code::{QrCodeEcc, QRCodeError};
 use wifi_qr_code::{AuthenticationType, Visibility, WifiCredentials};
 
 use std::fs::File;
@@ -22,7 +22,7 @@ struct Opt {
     png_file: PathBuf,
 }
 
-fn main() -> Result<(), std::io::Error> {
+fn main() -> Result<(), QRCodeError> {
     let opt = Opt::from_args();
     let password =
         rpassword::read_password_from_tty(Some("Password: ")).expect("Failed to get password.");

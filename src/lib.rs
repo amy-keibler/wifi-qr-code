@@ -4,7 +4,7 @@
 //!
 //! It is important to take into account that QR codes do not provide any security mechanisms that would prevent someone from just reading the code and recovering the password for the network. Android requires that you re-authenticate before it will display the QR code on the screen to make sure the user is allowed to share that information, for example.
 
-pub use qrcode_generator::QrCodeEcc;
+pub use qrcode_generator::{QrCodeEcc, QRCodeError};
 
 use std::io::Write;
 
@@ -26,7 +26,7 @@ use std::io::Write;
 pub fn encode_as_matrix(
     wifi_credentials: &WifiCredentials,
     qr_code_error_checking: QrCodeEcc,
-) -> Result<Vec<Vec<bool>>, std::io::Error> {
+) -> Result<Vec<Vec<bool>>, QRCodeError> {
     qrcode_generator::to_matrix(wifi_credentials.encode(), qr_code_error_checking)
 }
 
@@ -49,7 +49,7 @@ pub fn encode_as_image(
     wifi_credentials: &WifiCredentials,
     qr_code_error_checking: QrCodeEcc,
     image_size: usize,
-) -> Result<Vec<u8>, std::io::Error> {
+) -> Result<Vec<u8>, QRCodeError> {
     qrcode_generator::to_image(
         wifi_credentials.encode(),
         qr_code_error_checking,
@@ -79,13 +79,13 @@ pub fn encode_as_png(
     wifi_credentials: &WifiCredentials,
     qr_code_error_checking: QrCodeEcc,
     image_size: usize,
-    writer: impl Write,
-) -> Result<(), std::io::Error> {
-    qrcode_generator::to_png(
+    mut writer: impl Write,
+) -> Result<(), QRCodeError> {
+    qrcode_generator::to_png_to_writer(
         wifi_credentials.encode(),
         qr_code_error_checking,
         image_size,
-        writer,
+        &mut writer,
     )
 }
 
@@ -105,21 +105,19 @@ pub fn encode_as_png(
 ///     visibility: Visibility::Hidden,
 /// };
 /// let svg_file = File::create("wifi_qr.svg").expect("Failed to create example SVG file.");
-/// wifi_qr_code::encode_as_svg(&wifi_credentials, QrCodeEcc::Medium, 100, Some("Example Wifi QR Code"), svg_file);
+/// wifi_qr_code::encode_as_svg(&wifi_credentials, QrCodeEcc::Medium, 100, svg_file);
 /// ```
 pub fn encode_as_svg(
     wifi_credentials: &WifiCredentials,
     qr_code_error_checking: QrCodeEcc,
     image_size: usize,
-    description: Option<&str>,
-    writer: impl Write,
-) -> Result<(), std::io::Error> {
-    qrcode_generator::to_svg(
+    mut writer: impl Write,
+) -> Result<(), QRCodeError> {
+    qrcode_generator::to_png_to_writer(
         wifi_credentials.encode(),
         qr_code_error_checking,
         image_size,
-        description,
-        writer,
+        &mut writer,
     )
 }
 
