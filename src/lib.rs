@@ -4,7 +4,7 @@
 //!
 //! It is important to take into account that QR codes do not provide any security mechanisms that would prevent someone from just reading the code and recovering the password for the network. Android requires that you re-authenticate before it will display the QR code on the screen to make sure the user is allowed to share that information, for example.
 
-pub use qrcode_generator::{QrCodeEcc, QRCodeError};
+pub use qrcode_generator::{QRCodeError, QrCodeEcc};
 
 use std::io::Write;
 
