@@ -17,9 +17,8 @@ is-it-maintained-open-issues = { repository = "https://github.com/amy-keibler/wi
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-qrcode-generator = "4.1.1"
-serde_yaml = "<0.8.3"
+qrcode-generator = "4.1.2"
 
 [dev-dependencies]
-structopt = "0.3.23"
+structopt = "0.3.25"
 rpassword = "5.0.1"
