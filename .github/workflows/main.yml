@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2.4.0
     - name: Build
       run: cargo build --verbose
     - name: Run tests
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2.4.0
       - run: rustup component add clippy
       - uses: actions-rs/clippy-check@v1
         with:
