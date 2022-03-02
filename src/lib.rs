@@ -1,4 +1,6 @@
+#![deny(clippy::all)]
 #![deny(missing_docs)]
+#![deny(warnings)]
 
 //! Wifi QR codes are a way to encode wifi connection information and credentials into a QR code so that it can be scanned. They are supported via the latest Android and iOS phones, as well as other platforms.
 //!
@@ -199,11 +201,11 @@ impl WifiCredentials {
 
 fn escape(input: &str) -> String {
     String::from(input)
-        .replace(r#"\"#, r#"\\"#)
-        .replace(r#"""#, r#"\""#)
-        .replace(";", r#"\;"#)
-        .replace(",", r#"\,"#)
-        .replace(":", r#"\:"#)
+        .replace('\\', r#"\\"#)
+        .replace('"', r#"\""#)
+        .replace(';', r#"\;"#)
+        .replace(',', r#"\,"#)
+        .replace(':', r#"\:"#)
 }
 
 #[cfg(test)]
