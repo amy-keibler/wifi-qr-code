@@ -21,4 +21,4 @@ qrcode-generator = "4.1.2"
 
 [dev-dependencies]
 structopt = "0.3.25"
-rpassword = "5.0.1"
+rpassword = "6.0.0"
