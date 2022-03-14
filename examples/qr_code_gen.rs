@@ -1,7 +1,7 @@
 use structopt::StructOpt;
 
-use wifi_qr_code::{QrCodeEcc, QRCodeError};
 use wifi_qr_code::{AuthenticationType, Visibility, WifiCredentials};
+use wifi_qr_code::{QRCodeError, QrCodeEcc};
 
 use std::fs::File;
 use std::path::PathBuf;
@@ -24,8 +24,7 @@ struct Opt {
 
 fn main() -> Result<(), QRCodeError> {
     let opt = Opt::from_args();
-    let password =
-        rpassword::read_password_from_tty(Some("Password: ")).expect("Failed to get password.");
+    let password = rpassword::prompt_password("Password: ").expect("Failed to get password.");
 
     let visibility = if opt.hidden {
         Visibility::Hidden
